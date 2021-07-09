@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 using Snake.Controller;
+using Snake.Model.Cell;
 
 namespace SnakeUI
 {
@@ -19,6 +20,7 @@ namespace SnakeUI
         private GameController _controller;
         private int _height = 20;
         private int _width = 20;
+        private int _size = 25;
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace SnakeUI
         {
             _graphics = CreateGraphics();
             _direction = "right";
-            _controller = new GameController(20, 20);
+            _controller = new GameController(_height, _width);
         }
 
         private void DrawGrid()
@@ -39,16 +41,16 @@ namespace SnakeUI
                 {
                     var brush = new SolidBrush(Color.White);
                     
-                    if (_controller.Grid[i, j].IsApple)
+                    if (_controller.Grid[i, j] == CellType.Apple)
                     {
                         brush.Color = Color.Red;
                     }
-                    if (_controller.Grid[i, j].IsSnake)
+                    if (_controller.Grid[i, j] == CellType.Snake)
                     {
                         brush.Color = Color.Blue;
                     }
                     
-                    _graphics.FillRectangle(brush, j * 25, i * 25, 25, 25);
+                    _graphics.FillRectangle(brush, j * _size, i * _size, _size, _size);
                 }
             }
         }
@@ -66,12 +68,14 @@ namespace SnakeUI
 
         private void GameTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            if (!_controller.IsAlive)
-            {
-                Application.Exit();
-            }
             DrawGrid();
             _controller.Move(_direction);
+            
+            if (!_controller.IsAlive)
+            {
+                GameTimer.Stop();
+                _graphics.DrawString("GG", new Font(new FontFamily("Arial"), 100), new SolidBrush(Color.Black), 0, 0);
+            }
         }
     }
 }

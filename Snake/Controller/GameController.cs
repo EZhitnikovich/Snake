@@ -7,12 +7,13 @@ namespace Snake.Controller
     public class GameController
     {
         private GameModel _gameModel;
-        public Cell[,] Grid => _gameModel.Grid;
+        public Grid Grid;
         public bool IsAlive => _gameModel.IsAlive;
         
         public GameController(int height, int width)
         {
-            _gameModel = new GameModel(height, width);
+            Grid = new Grid(height, width);
+            _gameModel = new GameModel(Grid);
         }
 
         public void Move(string direction)

@@ -1,8 +1,8 @@
 ﻿namespace Snake.Model.Cell
 {
-    public class Cell
+    internal class Cell
     {
-        public Cell(CellType cellType)
+        internal Cell(CellType cellType)
         {
             CellType = cellType;
         }
