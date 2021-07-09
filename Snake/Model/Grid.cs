@@ -11,8 +11,8 @@ namespace Snake.Model
         private Cell.Cell[,] _cells;
         public int Height { get; }
         public int Width { get; }
-        public IEnumerable<Point> _snakePosition;
-        private Point _applePosition { get; }
+        private IEnumerable<Point> _snakePosition;
+        private Point _applePosition;
 
         public Grid(int height, int width)
         {
