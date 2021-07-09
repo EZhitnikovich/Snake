@@ -32,18 +32,18 @@ namespace Snake.Model
         public void UpdateSnakePosition(Direction direction)
         {
             _direction = direction;
-            Point point = _snake.Last();
+            var head = _snake.Last();
             
             switch (_direction)
             {
-                case Direction.Down: point = point + new Point(1, 0); break;
-                case Direction.Up: point = point + new Point(-1, 0); break;
-                case Direction.Left: point = point + new Point(0, -1); break;
-                case Direction.Right: point = point + new Point(0, 1); break;
+                case Direction.Down: head = head + new Point(1, 0); break;
+                case Direction.Up: head = head + new Point(-1, 0); break;
+                case Direction.Left: head = head + new Point(0, -1); break;
+                case Direction.Right: head = head + new Point(0, 1); break;
             }
 
-            int y = point.Y;
-            int x = point.X;
+            var y = head.Y;
+            var x = head.X;
 
             if (y < 0 || y > Grid.Width - 1 || x < 0 || x > Grid.Height - 1)
             {
@@ -53,13 +53,13 @@ namespace Snake.Model
             
             if (Grid[x, y].Equals(CellType.Apple))
             {
-                _snake.Add(point);
+                _snake.Add(head);
                 apples = 0;
             }
             else if (Grid[x, y].Equals(CellType.Air))
             {
                 _snake.RemoveAt(0);
-                _snake.Add(point);
+                _snake.Add(head);
             }
             else
             {
