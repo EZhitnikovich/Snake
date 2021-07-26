@@ -1,4 +1,4 @@
-﻿namespace SnakeUI
+﻿namespace Snake
 {
     partial class Form1
     {
@@ -29,31 +29,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GameTimer = new System.Timers.Timer();
-            ((System.ComponentModel.ISupportInitialize) (this.GameTimer)).BeginInit();
+            this.timer1 = new System.Timers.Timer();
+            ((System.ComponentModel.ISupportInitialize) (this.timer1)).BeginInit();
             this.SuspendLayout();
             // 
-            // GameTimer
+            // timer1
             // 
-            this.GameTimer.Enabled = true;
-            this.GameTimer.SynchronizingObject = this;
-            this.GameTimer.Elapsed += new System.Timers.ElapsedEventHandler(this.GameTimer_Elapsed);
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 250D;
+            this.timer1.SynchronizingObject = this;
+            this.timer1.Elapsed += new System.Timers.ElapsedEventHandler(this.timer1_Elapsed);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 500);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ClientSize = new System.Drawing.Size(899, 723);
             this.Name = "Form1";
             this.Text = "Snake";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
-            ((System.ComponentModel.ISupportInitialize) (this.GameTimer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.timer1)).EndInit();
             this.ResumeLayout(false);
         }
 
-        private System.Timers.Timer GameTimer;
+        private System.Timers.Timer timer1;
 
         #endregion
     }

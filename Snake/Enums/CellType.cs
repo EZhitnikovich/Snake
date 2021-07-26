@@ -1,9 +1,9 @@
-﻿namespace Snake.Model.Cell
+﻿namespace Snake.Enums
 {
     public enum CellType
     {
         Air,
         Snake,
-        Apple
+        Fruit
     }
 }
