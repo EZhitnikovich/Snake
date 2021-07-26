@@ -56,11 +56,6 @@ namespace Snake.Models
                 _snake.RemoveAt(0);
                 _snake.Add(head);
             }
-
-            using (var fs = new FileStream("a.txt", FileMode.Append))
-            {
-                fs.Write(Encoding.Default.GetBytes($"{head.X}, {head.Y} | {_applePosition.X}, {_applePosition.Y}\n"));
-            }
         }
 
         public void UpdateFruitPosition()
